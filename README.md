@@ -70,7 +70,7 @@ This task runs the following command before loading new data:
 
 Purpose:
 - Removes old data from the destination table before loading fresh records.
-
+- Command :- TRUNCATE TABLE Task4
 ---
 
 ### 2️⃣ Data Flow Task  
@@ -97,4 +97,54 @@ The Data Flow performs the following steps:
 ### Step 2 – Sort transformation on all Excel sources
 
 All three Excel inputs are sorted by:
+### Step 3 – Merge Excel File 1 and Excel File 2
 
+- The first Merge transformation combines Excel 1 and Excel 2 based on the sorted ID.
+
+---
+
+### Step 4 – Merge the result with Excel File 3
+
+- A second Merge transformation is used.
+- The output of the first merge is merged with Excel 3.
+
+---
+
+### Step 5 – Multicast Transformation
+
+After all three Excel files are merged, the final dataset is passed into a:
+## 📤 Parallel Data Load Using Multicast
+
+From the Multicast output, data is sent to two different paths.
+
+---
+
+### 🟢 Path 1 – Local SQL Server Database
+
+- A Sort transformation is applied
+- Data is sorted by Month:
+### 🔵 Path 2 – AWS RDS SQL Server Database
+
+- A separate Sort transformation is applied
+- Data is sorted by First Name:
+## ✅ Local Database Verification
+
+<img width="1920" height="1080" alt="Local Databse" src="https://github.com/user-attachments/assets/ffb16ec1-8549-4803-a42e-f9984c4d935c" />
+
+The above screenshot confirms that the data is successfully loaded into the Local SQL Server database.
+
+---
+
+## ☁ AWS Cloud Database Verification
+
+<img width="1920" height="1080" alt="Cloud Data" src="https://github.com/user-attachments/assets/5410016e-6657-4f85-91eb-aad3071982e7" />
+
+The above screenshot confirms that the data is successfully loaded into the AWS RDS SQL Server database.
+
+---
+
+## ☁ AWS RDS Cloud Database View
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b548b330-574e-405a-a268-5c44f33b2c92" />
+
+This image shows the cloud database table containing the final processed data.
