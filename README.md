@@ -112,7 +112,7 @@ All three Excel inputs are sorted by:
 
 ### Step 5 – Multicast Transformation
 
-After all three Excel files are merged, the final dataset is passed into a:
+After all three Excel files are merged, the final dataset is passed into a Local Server and Cloud Server:
 ## 📤 Parallel Data Load Using Multicast
 
 From the Multicast output, data is sent to two different paths.
