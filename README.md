@@ -1,7 +1,34 @@
 # SSIS_Multicast_Excel_To_Local_And_AWS_RDS
 
-This project demonstrates a complete SSIS ETL pipeline that reads data from three Excel files, performs sorting and merging transformations, and loads the final processed data into both a local SQL Server database and an AWS RDS (SQL Server) database.  
-By using the Multicast transformation, the same data stream is delivered in parallel to on-premises and cloud destinations, representing a real-world hybrid data integration scenario.
+This project demonstrates a complete end-to-end SSIS ETL pipeline that reads data from three Excel files, sorts and merges them using SSIS transformations, and finally loads the processed data into two different destinations in parallel:
+- ✅ Local SQL Server Database
+- ✅ AWS RDS (SQL Server) Cloud Database
+
+The project showcases a real-world hybrid data integration scenario using SSIS Multicast.
+
+---
+
+## 📌 Project Objective
+
+To design an SSIS package that:
+
+- Reads data from three Excel source files
+- Sorts all Excel data by ID
+- Merges Excel File 1 and Excel File 2
+- Merges the result with Excel File 3
+- Sends the final merged dataset to:
+  - Local SQL Server (sorted by Month)
+  - AWS RDS SQL Server (sorted by First Name)
+
+---
+
+## 🛠 Tools & Technologies
+
+- SQL Server Integration Services (SSIS)
+- Microsoft Excel (Source files)
+- SQL Server (Local database)
+- AWS RDS – SQL Server (Cloud database)
+- Visual Studio (SSDT)
 
 ---
 
@@ -22,26 +49,52 @@ By using the Multicast transformation, the same data stream is delivered in para
 
 ---
 
-All three Excel files contain the same structure:
+## 🧩 Overall Package Architecture
 
-- id  
-- First_name  
-- Last_name  
-- gender  
-- Phon_Company  
-- month  
+The SSIS package is divided into two main parts:
+
+- Control Flow
+- Data Flow
 
 ---
 
-## 🧭 Control Flow
+## 🔁 Control Flow Design
 
 <img width="1920" height="1080" alt="Screenshot (789)" src="https://github.com/user-attachments/assets/f22096da-8368-46ab-a19d-3143c0588199" />
 
-The Control Flow contains two main tasks:
+### Control Flow contains two tasks:
 
-### 1. Execute SQL Task
+### 1️⃣ Execute SQL Task  
+This task runs the following command before loading new data:
 
-Before loading any data, the destination table is cleaned using the following command:
 
-```sql
-TRUNCATE TABLE Task4;
+Purpose:
+- Removes old data from the destination table before loading fresh records.
+
+---
+
+### 2️⃣ Data Flow Task  
+This task performs all data extraction, transformation and loading operations from Excel to databases.
+
+---
+
+## 🔄 Data Flow Design
+
+<img width="1920" height="1080" alt="Screenshot (790)" src="https://github.com/user-attachments/assets/295d1ed1-ebe6-4cfb-b0d4-7cf6747afd17" />
+
+The Data Flow performs the following steps:
+
+---
+
+### Step 1 – Read data from three Excel files
+
+- Excel Source 1
+- Excel Source 2
+- Excel Source 3
+
+---
+
+### Step 2 – Sort transformation on all Excel sources
+
+All three Excel inputs are sorted by:
+
