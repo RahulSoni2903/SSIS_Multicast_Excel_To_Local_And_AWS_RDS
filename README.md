@@ -145,6 +145,6 @@ The above screenshot confirms that the data is successfully loaded into the AWS 
 
 ## ☁ AWS RDS Cloud Database View
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b548b330-574e-405a-a268-5c44f33b2c92" />
+<img width="1920" height="907" alt="Screenshot (800)" src="https://github.com/user-attachments/assets/848fbb40-3d0c-436f-af0d-fa63ca6b85eb" />
 
 This image shows the cloud database table containing the final processed data.
