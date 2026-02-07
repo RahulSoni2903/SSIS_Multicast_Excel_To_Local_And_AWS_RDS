@@ -96,7 +96,7 @@ The Data Flow performs the following steps:
 
 ### Step 2 – Sort transformation on all Excel sources
 
-All three Excel inputs are sorted by:
+All three Excel inputs are sorted by ID:
 ### Step 3 – Merge Excel File 1 and Excel File 2
 
 - The first Merge transformation combines Excel 1 and Excel 2 based on the sorted ID.
